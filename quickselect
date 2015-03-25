@@ -1,0 +1,19 @@
+def quickselect(alist,k):
+    if len(alist)>0:
+        pivot=alist[0]
+        smallerlist=[]
+        for i in alist:
+            if i<pivot:
+                smallerlist.append(i)
+        largerlist=[]
+        for i in alist:
+            if i>pivot:
+                largerlist.append(i)
+        m=len(smallerlist)
+        count=len(alist)-len(smallerlist)-len(largerlist)
+        if k>=m and k< m+count:
+            return pivot
+        elif m>k:
+            return quickselect(smallerlist,k)
+        else:
+            return quickselect(largerlist,k-m-count)
